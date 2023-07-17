@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$tableName = "";
+$tableName = "js2cshool";
 
 // Create connection
 $connect = mysqli_connect($servername, $username, $password, $tableName);
