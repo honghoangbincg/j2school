@@ -32,7 +32,7 @@
       <div class="mb-3">
         <label class="form-label">Old Image</label>
         <br>
-        <img width="150" src=".<?php echo $result['image']; ?>" alt="" title="" loading="lazy">
+        <img width="150" src="../../<?php echo $result['image']; ?>" alt="" title="" loading="lazy">
         <input type="hidden" class="form-control" name="image_old" value="<?php echo $result['image']; ?>">
         <br>
         <label for="image" class="form-label mt-2">Change new image</label>

@@ -33,7 +33,7 @@ $result = mysqli_query($connect, $sql);
             <td><?= $item['name'] ?></td>
             <td><?= $item['price'] ?></td>
             <td><?php echo $item['manufacture_name']; ?></td>
-            <td><img height="100" src="<?= $item['image'] ?>"></td>
+            <td><img height="100" src="../../<?= $item['image'] ?>"></td>
             <td><a href="form_update.php?id=<?= $item['id'] ?>">Update</a></td>
             <td><a href="delete.php?id=<?= $item['id'] ?>">Delete</a></td>
          </tr>

@@ -1,21 +1,31 @@
 <?php
-if (empty($_POST['name']) || empty($_POST['price']) || empty($_POST['manufacture_id'])) {
-    header('Location:form_insert.php?error=Require fill out fully fields');
+if (empty($_POST['name']) || empty($_POST['phone']) || empty($_POST['address'])) {
+    header('Location:form_update.php?error=Require fill out fully fields');
     exit;
 }
+$id = $_POST['id'];
 $name = addslashes($_POST['name']);
-$image = $_FILES['image'];
-$price = $_POST['price'];
-$description = addslashes($_POST['description']);
-$manufacture_id = $_POST['manufacture_id'];
+$new_image = $_FILES['new_image'];
+$old_image = $_POST['old_image'];
+$phone = $_POST['phone'];
+$address = addslashes($_POST['address']);
 $folder = 'images/';
-$file_name = explode('.', $image['name'])[0];
-$file_extension = strtolower(explode('.', $image['name'])[1]);
-$pathFile = $folder . time() . '.' . $file_extension;
-move_uploaded_file($_FILES["image"]["tmp_name"], $pathFile);
+if($new_image["size"] > 0) {
+    $file_name = explode('.', $new_image['name'])[0];
+    $file_extension = $folder . time() .'.' . strtolower(explode('.', $new_image['name'])[1]);
+    $pathFile = '../../' . $file_extension;
+    move_uploaded_file($new_image["tmp_name"], $pathFile);
+}else {
+    $file_extension = $old_image;
+}
 include '../../connect.php';
-$sql = "INSERT INTO products(name, image, price, description, manufacture_id) 
-VALUES('$name', '$pathFile', '$price', '$description', '$manufacture_id')";
+$sql = "UPDATE manufactures 
+SET 
+name = '$name', 
+image = '$file_extension', 
+phone = '$phone', 
+address = '$address'
+WHERE id = '$id'";
 mysqli_query($connect, $sql);
 mysqli_close($connect);
 header('Location:index.php?sucess=Add Sucessful');

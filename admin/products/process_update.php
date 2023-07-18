@@ -17,16 +17,16 @@ $manufacture_id = $_POST['manufacture_id'];
 if ($image_new['size'] > 0) {
   $folder = "images/";
   $file_name = explode('.', $image_new['name'])[0];
-  $file_extension = strtolower(explode('.', $image_new['name'])[1]);
-  $pathFile = $folder . time() . '.' . $file_extension;
+  $file_extension = $folder . time() . '.' . strtolower(explode('.', $image_new['name'])[1]);
+  $pathFile = '../../' . $file_extension;
   move_uploaded_file($_FILES["image_new"]["tmp_name"], $pathFile);
 } else {
-  $pathFile = $image_old;
+  $file_extension = $image_old;
 }
 
 include '../../connect.php';
 $sql = "UPDATE products
-SET name ='$name', image = '$pathFile',  price = '$price', description = '$description', manufacture_id ='$manufacture_id'
+SET name ='$name', image = '$file_extension',  price = '$price', description = '$description', manufacture_id ='$manufacture_id'
 WHERE id = '$id'";
 mysqli_query($connect, $sql);
 mysqli_close($connect);

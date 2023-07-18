@@ -17,7 +17,7 @@
   if ($number_rows === 1) {
     $result = mysqli_fetch_array($resultArr);
   ?>
-    <form class="mt-4" method="post" action="process_update.php">
+    <form class="mt-4" method="post" action="process_update.php" enctype="multipart/form-data">
       <input type="hidden" name="id" value="<?php echo $result['id']; ?>" />
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
@@ -29,14 +29,19 @@
         <input type="text" class="form-control" id="phone" name="phone" placeholder="phone" value="<?php echo $result['phone']; ?>">
       </div>
       <div class="mb-3">
-        <label for="image" class="form-label">Image</label>
-        <input type="text" class="form-control" id="image" name="image" placeholder="image" value="<?php echo $result['image']; ?>">
+        <label class="form-label">Old Image</label>
+        <br>
+        <img width="150" src="../../<?php echo $result['image']; ?>" alt="" title="" loading="lazy">
+        <input type="hidden" class="form-control" name="old_image" value="<?php echo $result['image']; ?>">
+        <br>
+        <label for="image" class="form-label mt-2">Change New Image</label>
+        <input type="file" class="form-control" id="image" name="new_image">
       </div>
       <div class="mb-3">
         <label for="address" class="form-label">Address</label>
         <textarea class="form-control" placeholder="address" name="address" rows="2">
-    <?php echo $result['address']; ?>
-    </textarea>
+          <?php echo $result['address']; ?>
+      </textarea>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
