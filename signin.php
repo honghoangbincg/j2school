@@ -254,25 +254,21 @@ main section.section-login .section-main .section-login-2 .section-login-2-main 
                         <?php echo $_GET['error']?>
                     </div>
                     <?php }?>
-                    <h1 class="section-login-2-title">Sign Up</h1>
-                    <form class="section-login-2-form w-100" method="post" action="process_signup.php">
-                        <div class="login-form-2">
-                            <label for="input-name">Full Name</label>
-                            <input type="text" id="input-name" name="name" placeholder="John Doe" required>
-                        </div>
+                    <h1 class="section-login-2-title">Sign In</h1>
+                    <form class="section-login-2-form w-100" method="post" action="process_signin.php">
                         <div class="login-form-1">
                             <label for="input-email">Email</label>
                             <input type="text" id="input-email" name="email" placeholder="john@example.com" required>
                         </div>
                         <div class="login-form-3">
                             <label for="input-password">Password</label>
-                            <input type="password" id="input-password" name="password" placeholder="password" required>
+                            <input type="password" id="input-password" name="password" placeholder="password">
                         </div>
                         <div class="login-form-submit-btn">
-                            <button type="submit">Create an Account</button>
+                            <button type="submit">Sign In</button>
                         </div>
                         <div class="login-form-5">
-                            <p>Already have an account? <a href="/j2school/signin.php">Sign In</a></p>
+                            <p>Already have an account? <a href="/j2school/signup.php">Sign Up</a></p>
                         </div>
                     </form>
 
