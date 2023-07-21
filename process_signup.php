@@ -13,7 +13,9 @@ $result = mysqli_query($connect, $sql);
 $count = mysqli_fetch_array($result)["COUNT(*)"];
 
 if($count == 1) {
-    header('Location:signup.php?error=email is exist');
+    session_start();
+    $_SESSION['error'] = 'email is exist';
+    header('Location:signup.php');
     exit;
 }
 $sql_insert = "INSERT INTO customers(name, email, password) VALUES('$name', '$email', '$password')";

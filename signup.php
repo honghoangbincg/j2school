@@ -1,3 +1,4 @@
+<?php session_start();?>
 <?php include_once './header.php' ?>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
@@ -249,9 +250,11 @@ main section.section-login .section-main .section-login-2 .section-login-2-main 
             </div>
             <div class="section-login-2">
                 <div class="section-login-2-main">
-                    <?php if(isset($_GET['error'])) {?>
+                    <?php if(isset($_SESSION['error'])) {?>
                     <div class="alert alert-danger w-100 text-danger" role="alert">
-                        <?php echo $_GET['error']?>
+                        <?php echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                        ?>
                     </div>
                     <?php }?>
                     <h1 class="section-login-2-title">Sign Up</h1>
