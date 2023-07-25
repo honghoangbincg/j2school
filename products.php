@@ -14,6 +14,9 @@ mysqli_close($connect);
                     <h5 class="card-title"><?php echo $item['name'] ?></h5>
                     <p class="card-text"><?php echo $item['description'] ?></p>
                     <a href="product.php?id=<?php echo $item['id'] ?>" class="btn btn-primary">View more</a>
+                    <?php if(!empty($_SESSION['id'])) { ?>
+                    <a href="add_to_cart.php?id=<?php echo $item['id'] ?>" class="btn btn-warning">Add to Cart</a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
