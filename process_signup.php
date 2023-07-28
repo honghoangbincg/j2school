@@ -2,6 +2,8 @@
 session_start();
 $email = $_POST['email'];
 $name = $_POST['name'];
+$phone = $_POST['phone'];
+$address = $_POST['address'];
 $password = $_POST['password'];
 if (empty($email) || empty($name) || empty($password)) {
     header('Location:signup.php?error=sign up fail');
@@ -18,7 +20,7 @@ if ($count == 1) {
     header('Location:signup.php');
     exit;
 }
-$sql_insert = "INSERT INTO customers(name, email, password) VALUES('$name', '$email', '$password')";
+$sql_insert = "INSERT INTO customers(name, email, password, phone_number, address) VALUES('$name', '$email', '$password', '$phone', '$address')";
 mysqli_query($connect, $sql_insert);
 $sql_session = "SELECT id FROM customers WHERE email = '$email'";
 $result_session = mysqli_query($connect, $sql_session);

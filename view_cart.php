@@ -1,20 +1,17 @@
 <?php include_once 'header.php'; ?>
 
 <?php 
-    $cart = $_SESSION['cart'];
+    $cart = [];
+    if(isset($_SESSION['cart'])) {
+        $cart = $_SESSION['cart'];
+    }
+   
 ?>
 <style>
 .title {
     margin-bottom: 5vh;
 }
 
-.card {
-    margin: auto;
-    width: 90%;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 1rem;
-    border: transparent;
-}
 
 media(max-width:767px) {
     .card {
@@ -41,8 +38,16 @@ media(max-width:767px) {
     background-color: #ddd;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    padding: 4vh;
+    padding: 2vh;
     color: rgb(65, 65, 65);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.summary .btn {
+    width: fit-content;
+    margin: 0 auto;
 }
 
 @media(max-width:767px) {
@@ -182,6 +187,7 @@ if($numItems > 0) {
                 <?php 
                 
                 $i = 1;
+                $sum_price =0;
                 foreach ($cart as $id => $each) { ?>
                 <div class="row border-top <?php echo ($i === $numItems) ? 'border-bottom' : ''?>">
                     <div class="row main align-items-center">
@@ -195,7 +201,11 @@ if($numItems > 0) {
                                 class="border d-inline-block px-2"><?php echo $each['quantity']; ?></span>
                             <a href="update_quantity.php?id=<?php echo $id;?>&type=increase">+</a>
                         </div>
-                        <div class="col"><?php echo number_format($each['price'] * $each['quantity'] )?> VND</div>
+                        <div class="col">
+                            <?php 
+                        $result = $each['price'] * $each['quantity'] ;
+                        $sum_price += $result;
+                        echo number_format($result);?> VND</div>
                         <div class="col-1 remove">
                             <a href="delete_cart.php?id=<?php echo $id;?>">
                                 <i class="fa-solid fa-trash-can"></i>
@@ -210,14 +220,15 @@ if($numItems > 0) {
             </div>
             <div class="col-md-4 summary">
                 <div>
-                    <h5><b>Summary</b></h5>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col" style="padding-left:0;">ITEMS <?php echo $numItems = count($cart);?></div>
-                    <div class="col text-right">&euro; 132.00</div>
-                </div>
-                <form>
+                    <div>
+                        <h5><b>Summary</b></h5>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col" style="padding-left:0;">ITEMS <?php echo $numItems = count($cart);?></div>
+                        <div class="col text-right"><?php echo number_format($sum_price);?> VND</div>
+                    </div>
+                    <!-- <form>
                     <p>SHIPPING</p>
                     <select>
                         <option class="text-muted">Standard-Delivery- &euro;5.00</option>
@@ -228,8 +239,9 @@ if($numItems > 0) {
                 <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                     <div class="col">TOTAL PRICE</div>
                     <div class="col text-right">&euro; 137.00</div>
+                </div> -->
                 </div>
-                <button class="btn">CHECKOUT</button>
+                <a href="checkout.php" class="btn btn-info">CHECKOUT</a>
             </div>
         </div>
 

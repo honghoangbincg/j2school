@@ -12,6 +12,21 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/form.css">
+    <style>
+    .main-wrapper {
+        height: 79vh;
+        padding-top: 70px;
+        background: #ddd;
+    }
+
+    .card {
+        margin: auto;
+        width: 90%;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 1rem;
+        border: transparent;
+    }
+    </style>
 </head>
 
 <body>
@@ -43,8 +58,12 @@
                         </li>
                         <?php } else{ ?>
                         <li class="nav-item">
+                            <a class="nav-link" href="/j2school/view_cart.php">Go to Cart</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/j2school/signout.php">Sign Out</a>
                         </li>
+
                         <?php }?>
                     </ul>
                 </div>

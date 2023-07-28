@@ -20,11 +20,11 @@
             <div class="section-login-2">
                 <div class="section-login-2-main">
                     <?php if (isset($_SESSION['error'])) { ?>
-                        <div class="alert alert-danger w-100 text-danger" role="alert">
-                            <?php echo $_SESSION['error'];
+                    <div class="alert alert-danger w-100 text-danger" role="alert">
+                        <?php echo $_SESSION['error'];
                             unset($_SESSION['error']);
                             ?>
-                        </div>
+                    </div>
                     <?php } ?>
                     <h1 class="section-login-2-title">Sign Up</h1>
                     <form class="section-login-2-form w-100" method="post" action="process_signup.php">
@@ -39,6 +39,14 @@
                         <div class="login-form-3">
                             <label for="input-password">Password</label>
                             <input type="password" id="input-password" name="password" placeholder="password" required>
+                        </div>
+                        <div class="login-form-3">
+                            <label for="input-phone">Phone Number</label>
+                            <input type="text" id="input-phone" name="phone" placeholder="Phone Number">
+                        </div>
+                        <div class="login-form-3">
+                            <label for="input-address">Address</label>
+                            <input type="text" id="input-address" name="address" placeholder="Address">
                         </div>
                         <div class="login-form-submit-btn">
                             <button type="submit">Create an Account</button>
