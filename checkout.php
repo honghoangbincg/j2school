@@ -28,7 +28,7 @@ $each   = mysqli_fetch_array($result);
                             value="<?php echo $each['address']; ?>">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Order</button>
                 </form>
             </div>
         </div>
