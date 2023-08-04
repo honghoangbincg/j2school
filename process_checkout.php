@@ -16,4 +16,18 @@ $status = 0; // moi dat
 
 $sql = "INSERT INTO orders(customer_id, name_receiver, phone_receiver, address_receiver, status, total_price)
 VALUES('$customer_id', '$name_receiver', '$phone_receiver', '$address_receiver', '$status', '$total_price')";
+mysqli_query($connect, $sql);
 $sql = "SELECT max(id) FROM orders WHERE customer_id='$customer_id'";
+$result = mysqli_query($connect, $sql);
+$order_id = mysqli_fetch_array($result)['max(id)'];
+
+foreach ($cart as $product_id => $each) 
+{
+    $quantity = $each['quantity'];
+    $sql = "INSERT INTO order_product(order_id, product_id, quantity)
+    VALUES('$order_id', '$product_id', '$quantity')";
+    mysqli_query($connect, $sql);
+}
+mysqli_close($connect);
+unset($_SESSION['cart']);
+header("location:index.php");

@@ -1,6 +1,4 @@
+<?php require_once '../check_admin_login.php'; ?>
 <?php include '../header.php'?>
-<?php include_once '../menu.php' ?>
-   <div class="container">
-   <h1>Đây là giao diện admin</h1>
-   </div>
+<h1>Đây là giao diện admin</h1>
 <?php include '../footer.php'?>

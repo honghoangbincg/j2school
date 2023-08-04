@@ -1,3 +1,4 @@
+<?php require_once '../check_super_admin_login.php'; ?>
 <?php include '../header.php' ?>
 <div style="min-height:500px">
     <?php

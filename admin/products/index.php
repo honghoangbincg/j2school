@@ -1,3 +1,4 @@
+<?php require_once '../check_admin_login.php'; ?>
 <?php include '../header.php' ?>
 <h1>Đây là giao diện products</h1>
 <a class="btn btn-primary btn-lg mb-3" href="form_insert.php" style=" --bs-btn-padding-x: 2.5rem;">Add</a>
@@ -15,20 +16,20 @@ $sql =  "SELECT products.*,
 $result = mysqli_query($connect, $sql);
 ?>
 <table class="table mt-3 table-bordered">
-   <thead>
-      <tr>
-         <th scope="col">id</th>
-         <th scope="col">Name</th>
-         <th scope="col">Price</th>
-         <th scope="col">Manufacturer</th>
-         <th scope="col">Image</th>
-         <th scope="col">Update</th>
-         <th scope="col">Delete</th>
-      </tr>
-   </thead>
-   <tbody>
-      <?php foreach ($result as $item) : ?>
-         <tr>
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Manufacturer</th>
+            <th scope="col">Image</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($result as $item) : ?>
+        <tr>
             <td><?= $item['id'] ?></td>
             <td><?= $item['name'] ?></td>
             <td><?= $item['price'] ?></td>
@@ -36,10 +37,10 @@ $result = mysqli_query($connect, $sql);
             <td><img height="100" src="../../<?= $item['image'] ?>"></td>
             <td><a href="form_update.php?id=<?= $item['id'] ?>">Update</a></td>
             <td><a href="delete.php?id=<?= $item['id'] ?>">Delete</a></td>
-         </tr>
-      <?php endforeach ?>
+        </tr>
+        <?php endforeach ?>
 
-   </tbody>
+    </tbody>
 </table>
 <?php
 mysqli_close($connect);
